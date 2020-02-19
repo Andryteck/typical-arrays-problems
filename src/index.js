@@ -1,23 +1,26 @@
 
-exports.min = function min (array) {
-  return array && array.length > 0 ?
-        array.reduce((min, cur) => {
-            if (cur < min) {
-                min = cur;
-            }
+exports.min = function min(array) {
+  if(array === undefined || array.length === 0) {
+    return 0;
+  }
 
-            return min;
-        }, array[0]) : 0;
+  let min = array[0];
+  array.forEach(element => {
+    min = Math.min(min, element);
+  });
+
+  return min;
 }
 
-exports.max = function max (array) {
+exports.max = function max(array) {
   if (!array || array.length === 0) return 0
-    return Math.max(...array)
+  return Math.max(...array)
 }
 
-exports.avg = function avg (array) {
+exports.avg = function avg(array) {
   if (!array || array.length === 0) return 0
-    return (
-        array.reduce((previous, current) => (current += previous), 0) /
-        array.length
+  return (
+    array.reduce((previous, current) => (current += previous), 0) /
+    array.length
+  )
 }
